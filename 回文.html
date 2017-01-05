@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function palindrome(str) {
+	 // Good luck!
+  var re = /[\W\s_]/gi;//不区分大小写的寻找空白字符，非单词字符
+  str = str.replace(re,"");
+  alert("去除空格和标点符号后"+str)
+  return str.toLowerCase() === str.split("").reverse().join("").toLowerCase();
+	
+	
+  /*var smallstr=str.toLowerCase();
+   alert("小写后"+smallstr);
+  var arraystr=smallstr.split('');
+  alert("分割后"+arraystr);
+  for(var i=0;i<arraystr.length;i++){
+    if(arraystr[i]<97||arraystr[i]>122){
+      arraystr.splice(i,1);
+	  alert("删除后"+arraystr);
+    }    
+  };
+  alert(arraystr+"和"+arraystr.reverse());
+  for(var j=0;j<arraystr.length;j++){
+	  var a=arraystr[j];
+	  var b=arraystr.reverse()[j];
+	  alert(a+"和"+b);
+      if(arraystr[j]!=arraystr.reverse()[j]){
+         return false;
+      }    
+  }
+  return true;*/
+}
+alert(palindrome("WSSS  * * * e"));
+alert(palindrome("e  * * * e"));
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

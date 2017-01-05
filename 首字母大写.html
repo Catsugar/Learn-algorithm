@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function titleCase(str) {
+  var array=str.split(" ");
+  for(var i in array){
+    array[i]=array[i].slice(0,1).toUpperCase().concat(array[i].slice(1).toLowerCase())
+    //alert(newstr[i]);
+  }
+  str=array.join(" ");
+  alert(str);
+  return str;
+}
+
+titleCase("I'm a little tea pot");
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
