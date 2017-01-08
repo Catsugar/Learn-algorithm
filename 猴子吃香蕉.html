@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function chunk(arr, size) {
+  // Break it up.
+  var num= Math.ceil(arr.length/size);
+ // var last=arr.length%size;
+  var newarr=[];
+  //if(last==0){
+	  for(var i=0;i<num;i++){
+		  newarr[i]=arr.slice(i*size,(i+1)*size);
+		  
+		  alert( "newarr[i]"+newarr[i]);
+
+	  }
+//  }
+  
+  return newarr;
+}
+
+chunk(["a", "b", "c", "d","e"], 2);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
