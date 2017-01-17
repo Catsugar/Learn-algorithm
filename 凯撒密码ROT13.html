@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function rot13(str) {
+    var newarr = [];
+    for (var i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) < 65 || str.charCodeAt(i) > 90) {
+            newarr.push(str.charAt(i));
+            // 非字母形式的字符，直接跳过，存入数组newarr中
+        } else if (str.charCodeAt(i) > 77) {
+            newarr.push(String.fromCharCode(str.charCodeAt(i) - 13));
+            // 77 —— 第13个大写字母“M”
+            // 后13个大写字母，减去13
+        } else {
+            newarr.push(String.fromCharCode(str.charCodeAt(i) + 13));
+            // 前13个大写字母，加上13 
+        }
+    }
+    return newarr.join("");
+}
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+</script>
+</head>
+
+<body>
+</body>
+</html>

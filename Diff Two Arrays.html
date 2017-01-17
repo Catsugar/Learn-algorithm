@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>比较两个数组，然后返回一个新数组，该数组的元素为两个给定数组中所有独有的数组元素。换言之，返回两个数组的差异。</title>
+</head>
+<body>
+<script type="text/javascript">
+//比较两个数组，然后返回一个新数组，该数组的元素为两个给定数组中所有独有的数组元素。换言之，返回两个数组的差异。
+/*function diff(arr1, arr2) {
+   var newArr=[];
+   for(var i=0; i<arr1.length; i++){
+	 if(test(arr1[i],arr2)!=null){
+		newArr.push(test(arr1[i],arr2));
+	 }
+   }
+   for(var i=0; i<arr2.length; i++){
+	 if(test(arr2[i],arr1)!=null){
+		newArr.push(test(arr2[i],arr1));
+	 }
+   }
+   alert(newArr);
+   return newArr;
+}
+function test(element,arr) {
+  for(var i=0; i<arr.length; i++){
+	if(element==arr[i]){
+		return null;
+	};
+  }
+  return element;
+}*/
+
+/**************************************官方解法****************/
+function diff(a, b)
+{
+  var a1 = a.filter(function(item,index,array){
+    return (b.indexOf(item) < 0);
+  });
+  var b1 = b.filter(function(item,index,array){
+    return (a.indexOf(item) < 0);
+  });
+  alert(a1.concat(b1));
+  return a1.concat(b1);
+}
+diff([1, 2, 3, 5,9], [1, 2, 3, 4, 5]);
+
+</script>
+</body>
+</html>

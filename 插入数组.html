@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+function where(arr, num) {
+    arr.push(num);
+    arr.sort(compare);
+    return arr.indexOf(num);
+}
+function compare(a, b) {
+    if (a < b) {
+        return -1; // a排在b的前面
+    } else if (a > b) {
+        return 1; // a排在b的后面
+    } else {
+        return 0; // a和b的位置保持不变
+    }
+}
+where([40, 60], 50);
+where([5, 3, 20, 3], 5);
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

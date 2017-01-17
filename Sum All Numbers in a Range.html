@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我们会传递给你一个包含两个数字的数组。返回这两个数字和它们之间所有数字的和。</title>
+</head>
+<body>
+<script type="text/javascript">
+//我们会传递给你一个包含两个数字的数组。返回这两个数字和它们之间所有数字的和。
+function sumAll(arr) {
+  var bignum=Math.max(arr[0],arr[1]);
+  var smallnum=Math.min(arr[0],arr[1]);
+  for(var i=1;i<(bignum-smallnum);i++){
+    arr.push(smallnum+i);
+  }
+  
+  var sum = arr.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+  alert(sum);
+  return sum;
+}
+
+sumAll([1, 4]);
+
+</script>
+</body>
+</html>
