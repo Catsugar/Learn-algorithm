@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Where art thou</title>
+</head>
+<script>
+function where(collection, source) {
+  var arr = [];
+  // What's in a name?
+   var keys = Object.keys(source);
+  arr = collection.filter(function(item){
+    for(var i = 0; i < keys.length; i++){
+      if(!item.hasOwnProperty(keys[i]) || item[keys[i]] !== source[keys[i]]){
+        return false;
+      }    
+    }   
+    return true;
+  });
+  alert(arr);
+  return arr;
+
+}
+
+where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+</script>
+
+<body>
+</body>
+</html>
