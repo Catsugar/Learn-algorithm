@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pig Latin</title>
+</head>
+<script>
+function translate(str) {
+  var arr=str.split('');
+  var newstr=str;
+  for(var i=0;i<arr.length;i++){
+    var A=arr[i];
+	//alert(A);
+    if(A==="a" || A==="o" || A==="e" || A==="i" || A==="u"){
+	  if(i===0){
+		newstr=newstr.concat("way");
+	  }else{
+		newstr=newstr.concat("ay");
+	  }
+	  //alert(newstr);
+	  break;
+    }else{
+	  newstr=newstr.slice(1).concat(A);
+	  //alert(newstr);
+    } 
+  }
+  alert(newstr);
+  return newstr;
+}
+
+translate("consonant");
+
+</script>
+
+<body>
+</body>
+</html>

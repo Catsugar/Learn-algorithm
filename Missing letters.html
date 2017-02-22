@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DNA Pairing</title>
+</head>
+<script>
+function fearNotLetter(str) {
+  var arr=str.split('');
+  var missletter= new Array();
+  for(var i=0;i<arr.length-1;i++){
+    var a=str.charCodeAt(i+1)-str.charCodeAt(i);  
+	//alert(a);
+    if(a>1){
+      for(var j=1;j<a;j++){
+        missletter.push(String.fromCharCode(str.charCodeAt(i)+j));
+      }
+    }
+  }
+  alert(missletter);
+  return missletter;
+}
+
+fearNotLetter("abcf");
+
+</script>
+
+<body>
+</body>
+</html>
