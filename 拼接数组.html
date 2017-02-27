@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+<script>
+function unite(arr1, arr2, arr3) {
+  var args = Array.from(arguments);
+  var arr = args.reduce(function(prev,cur,index,array){
+    return prev.concat(cur);
+  });
+  return arr.filter(function(item,index,array){
+    return array.indexOf(item) === index;
+  });
+}
+unite([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+</script>
+
+<body>
+</body>
+</html>
