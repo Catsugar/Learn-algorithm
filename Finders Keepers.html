@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找出能被两个给定参数和它们之间的连续数字整除的最小公倍数</title>
+</head>
+<script>
+function smallestCommons(arr) {
+  /*排序*/
+  var compare = function (x, y) {
+    return x-y;
+  }
+  arr.sort(compare);
+  /*生成新数组***/ 
+  var num=arr[0];     
+  var newarr=new Array();
+  for(var i=arr[0];i<arr[1]+1;i++){
+	  newarr.push(i);
+	  num*=i/gcd(num,i);
+  }
+  alert(newarr);
+  alert(num);
+  return num;
+}
+function gcd(m,n){
+  if(m%n===0)return n;
+  return gcd(n,m%n);
+}
+
+
+smallestCommons([11,5]);
+
+</script>
+<body>
+</body>
+</html>

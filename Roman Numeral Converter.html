@@ -2,23 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>将给定的数字转换成罗马数字</title>
+<title>给一个正整数num，返回小于或等于num的斐波纳契奇数之和。</title>
 </head>
 <body>
 <script type="text/javascript">
-function convert(num) {
-  var nums = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
-  var romans =["m","cm","d","cd","c","xc","l","xl","x","ix","v","iv","i"];
-  var str = '';
-  nums.forEach(function(item,index,array){
-    while(num >= item){
-      str += romans[index];
-      num -= item;
+/*function sumFibs(num) {
+  var fibo = [1, 1];
+  var oddSum = 2;
+  while(true){
+    var item = fibo[0] + fibo[1];
+    if(num < item){
+      return oddSum;
     }
-  });
-  
- return str.toUpperCase();
+    if(item % 2){
+      oddSum += item;    
+    }
+    fibo[0] = fibo[1];
+    fibo[1] = item;
+  }
+}*/
+function sumFibs(num) {
+	var sum=0;
+	var arr=new Array();
+	for(var i=0;i<num;i++){
+	  if(i<2){
+		arr[i]=1;	
+	  }else if(i>=2){
+		arr[i]=arr[i-1]+arr[i-2];
+	  }
+	  if(arr[i]%2===1){
+	  sum=sum+arr[i];}
+	  alert("arr[i]*****"+arr[i]+"sum*****"+sum);
+	}
+    return sum;
 }
+
+sumFibs(7);
+
 </script>
 </body>
 </html>
