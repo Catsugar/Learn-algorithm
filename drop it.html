@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>队友该卖就卖，千万别舍不得。</title>
+</head>
+<script>
+function drop(arr, func) {
+  var num=arr.filter(func);
+  var index=arr.indexOf(num[0]);
+  if(index<0){
+    arr=[];
+  }else{
+    arr=arr.slice(index);
+  }
+  return arr;
+}
+
+drop([1, 2, 3], function(n) {return n < 3; });
+
+</script>
+<body>
+</body>
+</html>

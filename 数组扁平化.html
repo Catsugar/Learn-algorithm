@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>对嵌套的数组进行扁平化处理</title>
+</head>
+<script>
+function steamroller(arr) {
+  var result=[];
+  for(var i=0; i<arr.length; i++){
+	  if(Array.isArray(arr[i])){
+		  result=result.concat(steamroller(arr[i]));
+	  }else{
+		  result.push(arr[i]);
+	  }
+  }
+
+  return result;
+}
+
+steamroller([1, [2], [3, [[4]]]]);
+</script>
+<body>
+</body>
+</html>
