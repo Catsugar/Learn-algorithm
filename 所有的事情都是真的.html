@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>所有的东西都是真的</title>
+</head>
+<script>
+function every(collection, pre) { 
+  var bCheck=true; 
+  for(var i in collection){ 
+    if(!collection[i][pre]){ 
+      bCheck=false; 
+    } 
+  } 
+  return bCheck; 
+}
+
+  
+every([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+</script>
+<body>
+</body>
+</html>
