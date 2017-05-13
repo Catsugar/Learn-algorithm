@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Two Sum </title>
+</head>
+
+<body>
+<script>
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    var indexs=[];
+    for(var i=0;i<nums.length;i++){
+        for(var j=i+1;j<nums.length;j++){
+           if(nums[i]+nums[j]===target){
+               indexs.push(i,j);
+           }
+        }
+        
+    }
+    return indexs;
+    
+};
+</script>
+</body>
+</html>

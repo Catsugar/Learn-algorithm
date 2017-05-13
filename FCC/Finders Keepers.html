@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>写一个 function，它浏览数组（第一个参数）并返回数组中第一个通过某种方法（第二个参数）验证的元素。</title>
+</head>
+<script>
+function find(arr, func) {
+  var num = arr.filter(func);
+  alert(num[0]);
+  return num[0];
+}
+
+find([1, 3, 5, 8, 9, 10], function(num){ return num % 2 === 0; });
+</script>
+<body>
+</body>
+</html>

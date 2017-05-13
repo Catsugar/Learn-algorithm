@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reverse Integer </title>
+</head>
+
+<body>
+<script>
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+    var y=0;
+    var arr=x.toString().split('').reverse();
+	if(x<0){
+		y=-parseInt(arr.join('').slice(0, -1));
+		return y>-2147483648?y:0;
+	}else if(x>0){
+		y=parseInt(arr.join(''));
+		return y<2147483648?y:0;
+	}  
+};
+
+alert(reverse(-32555551));
+</script>
+</body>
+</html>
