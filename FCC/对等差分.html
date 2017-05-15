@@ -6,5 +6,57 @@
 </head>
 
 <body>
+<script>
+function sym(args) {
+ //标准答案
+  /*var arr = [];
+  for(var i = 0; i < arguments.length; i++){
+    arr.push(arguments[i]);
+  }
+  var temp = arr.reduce(function(prev,cur,index,array){
+    var a = prev.filter(function(item){
+      return cur.indexOf(item) < 0;
+    });
+    var b = cur.filter(function(item){
+      return prev.indexOf(item) < 0;
+    });
+    return a.concat(b);
+  });
+  return temp.filter(function(item,index,array){
+    return array.indexOf(item) == index;
+  });*/
+  //我的作法,比较蠢
+  var arr = [];
+  var newarr=[];
+  for(var i = 0; i < arguments.length; i++){
+    arr.push(arguments[i]);
+  }
+  //扁平化
+  var result=[];
+  for(var i=0; i<arr.length; i++){
+	  if(Array.isArray(arr[i])){
+		  result=result.concat(arr[i]);
+	  }else{
+		  result.push(arr[i]);
+	  }
+  }
+  for(var i = 0; i < result.length; i++){
+	  for(var j = i+1; j < result.length; j++){
+		  console.log(result[i]+"..."+result[j]);
+		  if(result[i]==result[j]){
+		      newarr.push(result[i]);//找出重复的树
+		  }
+	  }
+	  
+  }
+  arr=result.filter(function(item){
+    return newarr.indexOf(item) < 0;
+  });
+  alert(arr);
+  return arr;
+  
+}
+sym([1, 2, 3], [5, 2, 1, 4]);
+</script>
 </body>
 </html>
