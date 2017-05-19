@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exact Change</title>
+</head>
+
+<body>
+<script>
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],-----0.01
+// ["NICKEL", 2.05],-----0.05
+// ["DIME", 3.10],------0.10
+// ["QUARTER", 4.25],----0.25
+// ["ONE", 90.00],-----------1
+// ["FIVE", 55.00],----------5
+// ["TEN", 20.00],-------10
+// ["TWENTY", 60.00],------20
+// ["ONE HUNDRED", 100.00]]--1
+
+function checkCashRegister(price, cash, cid) {
+	var change=[];
+	var did=[];
+	var value=cash-price;
+	if(value===0){return "Closed";}
+	var moneys=[0.01,0.05,0.10,0.25,1.00,5.00,10.00,20.00,100.00];
+	for(var i=0;i<cid.length;i++){
+        did.push([moneys[i],cid[i][1]]);
+	}
+	console.log("----------------------------------------");
+	console.log("要找的钱"+value);
+	console.log("did"+did);
+	console.log("cid"+cid);
+	account(value,did);
+	function account(value,did){
+	  console.log("*******循环开始******");
+	  var a=-1,b=-1;
+	  for(var i=0;i<did.length;i++){
+		if(did[i][0]<=value && did[i][1]!==0){a=i;}
+	  }
+	  console.log("a="+a);
+	  if(a===-1){
+		  console. log("不够找："+"Insufficient Funds");
+		  return "Insufficient Funds";
+	  }
+	  did[a][1]=Math.round((did[a][1]-did[a][0])*100)/100;
+	  value=Math.round((value-did[a][0])*100)/100;
+	  //console.log(did[a][0]);
+	  //console.log("value"+value);
+	 // console.log("剩下的零钱"+did);
+	  for(var j=0;j<change.length;j++){
+        if(change[j][0]===cid[a][0]){
+           change[j][1]=Math.round((change[j][1]+did[a][0])*100)/100;
+		   b=0;
+	    }
+      }
+	  if(b===-1){change.push([cid[a][0],did[a][0]]);}
+	   //console.log("change"+change);
+	  var checkdid=check(did);
+	  if(checkdid.length===0){
+	      if(value===0){
+			  console. log("刚刚好："+"Closed");
+		      return 'Closed'; 
+		  }else {
+			  console. log('不够找：'+'Insufficient Funds');
+		      return 'Insufficient Funds';
+		  }
+	  }else if(checkdid.length!==0){
+		  if(value===0){
+		      console. log('最后的找钱：'+change);
+		      return change;
+	      }else{
+		      account(value,did);
+	      }
+	   }
+	}
+	//检查还有没有钱
+	function check(C) {
+		var AC=[];
+		for(var i=0;i<C.length;i++ ){
+			if(C[i][1]!==0){
+				AC.push(C[i]);
+			}
+		}
+		return AC;
+	}
+}
+console.log("结果+++++++++++++++++"+checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]) );
+checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+
+checkCashRegister(19.50, 20.00, [["PENNY", 0.50], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+
+</script>
+</body>
+</html>
