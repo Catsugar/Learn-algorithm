@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>No repeats please</title>
+</head>
+
+<body>
+<script>
+/*把一个字符串中的字符重新排列生成新的字符串，返回新生成的字符串里没有连续重复字符的字符串个数.连续重复只以单个字符为准
+
+例如, aab 应该返回 2 因为它总共有6中排列 (aab, aab, aba, aba, baa, baa), 但是只有两个 (aba and aba)没有连续重复的字符 (在本例中是 a).*/
+
+function permAlone(str) {
+  var arr=str.split('');
+  var newarr=[];
+  var count=0;  
+  perm(arr);
+  function perm(arr) {  
+    (function fn(n) { //为第n个位置选择元素  
+        for(var i=n;i<arr.length;i++) {  
+            swap(arr,i,n);  
+            if(n+1<arr.length-1){   
+                fn(n+1); 
+			}else{ 
+			    var newstr=arr.join('');
+				if(check(newstr,newarr)){newarr.push(newstr);}
+                swap(arr,i,n);
+			}
+        }  
+    })(0);  
+  } 
+	//检查 重复元素
+   function check(str,arr){
+	 for(var i=0;i<arr.length;i++) {
+	    if(str===arr[i]){return false;}
+	 }
+	 return true;  
+   }  
+   
+    function swap(arr,i,j) {  
+    if(i!=j) {  
+        var temp=arr[i];  
+        arr[i]=arr[j];  
+        arr[j]=temp;  
+    }  
+  }  
+  document.write("全部排列后的结果是<br />"+newarr+"<br />");
+  var reg=/(.)\1+/g;; 
+  newarr=newarr.filter(function(val){
+     return !val.match(reg);
+  })  
+  document.write("筛选重复数组后的结果是<br />"+newarr+"<br />");
+  document.write("筛选重复数组的个数是<br />"+newarr.length+"<br />");
+  return newarr;
+}
+
+permAlone('aab');
+permAlone("abcdefa");
+
+</script>
+</body>
+</html>

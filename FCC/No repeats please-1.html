@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>No repeats please</title>
+</head>
+
+<body>
+<script>
+/*把一个字符串中的字符重新排列生成新的字符串，返回新生成的字符串里没有连续重复字符的字符串个数.连续重复只以单个字符为准
+
+例如, aab 应该返回 2 因为它总共有6中排列 (aab, aab, aba, aba, baa, baa), 但是只有两个 (aba and aba)没有连续重复的字符 (在本例中是 a).*/
+
+function permAlone(str) {
+   var arr=str.split("");
+  var perarr=[];
+  var begin=0;
+  //创建正则，如果字符串全重复，则直接return 0
+ //用于交换的函数
+  function swap(idx1,idx2){
+      var temp=arr[idx1];
+      arr[idx1]=arr[idx2];
+      arr[idx2]=temp;
+  }
+  //如果begin到了最后一个字符，可以将这个字符串加入到全排列数组中了
+  function permall(arr,begin){
+    if(begin==arr.length-1){
+      perarr[perarr.length]=arr.join("");
+      return;
+    }
+    for(var i=0;(i+begin)<arr.length;i++){
+      swap(begin,begin+i);
+      permall(arr,begin+1);
+      swap(begin,begin+i);
+    }
+  }
+  permall(arr,begin);
+  document.write("*******************************************************************************************************<br />");  
+  document.write("<br />--------------------全部排列后的结果是<br />");  
+  for(var i=0;i<perarr.length;i++) {
+	    if(i%20===19){document.write( perarr[i]+"<br />");
+		}else{document.write( perarr[i]+"&nbsp;&nbsp;");} 
+  }
+  document.write("<br />全部排列后数组的个数是"+perarr.length);
+  //返回相邻不重复的数量
+    var reg = /(.)\1+/g;
+  perarr= perarr.filter(function(val) {
+      return !val.match(reg);
+  });
+
+  document.write("<br />--------------------筛选重复数组的结果是<br />");  
+  for(var i=0;i<perarr.length;i++) {
+	    if(i%20===19){document.write( perarr[i]+"<br />");
+		}else{document.write( perarr[i]+"&nbsp;&nbsp;");} 
+  }
+  document.write("<br />筛选重复数组的个数是"+perarr.length);
+  return perarr.length;
+}
+
+
+permAlone('abcd');
+permAlone("abcdfea");
+permAlone("abfdefa");
+</script>
+</body>
+</html>

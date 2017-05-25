@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>No repeats please</title>
+</head>
+
+<body>
+<script>
+/*全排列（递归交换）算法  
+1、将第一个位置分别放置各个不同的元素；  
+2、对剩余的位置进行全排列（递归）；  
+3、递归出口为只对一个元素进行全排列。  
+*/ 
+function swap(arr,i,j) {  
+    if(i!=j) {  
+        var temp=arr[i];  
+        arr[i]=arr[j];  
+        arr[j]=temp;  
+    }  
+}  
+var count=0;  
+function show(arr) {  
+    document.write("P<sub>"+ ++count+"</sub>: "+arr+"<br />");  
+}  
+function perm(arr) {  
+    (function fn(n) { //为第n个位置选择元素  
+        for(var i=n;i<arr.length;i++) {  
+            swap(arr,i,n);  
+            if(n+1<arr.length-1) //判断数组中剩余的待全排列的元素是否大于1个  
+                fn(n+1); //从第n+1个下标进行全排列  
+            else 
+                show(arr); //显示一组结果  
+            swap(arr,i,n);  
+        }  
+    })(0);  
+} 
+
+/*  
+全排列（递归链接）算法  
+1、设定源数组为输入数组，结果数组存放排列结果（初始化为空数组）；  
+2、逐一将源数组的每个元素链接到结果数组中（生成新数组对象）；  
+3、从原数组中删除被链接的元素（生成新数组对象）；  
+4、将新的源数组和结果数组作为参数递归调用步骤2、3，直到源数组为空，则输出一个排列。  
+*/ 
+var count=0;  
+function show(arr) {  
+    document.write("P<sub>"+ ++count+"</sub>: "+arr+"<br />");  
+}  
+function perm(arr) {  
+    (function fn(source, result) {  
+        if (source.length == 0)  
+            show(result);  
+        else 
+            for (var i = 0; i < source.length; i++)  
+                fn(source.slice(0, i).concat(source.slice(i + 1)), result.concat(source[i]));  
+    })(arr, []);  
+}  
+/*  全排列（递归回溯）算法  
+1、建立位置数组，即对位置进行排列，排列成功后转换为元素的排列；  
+2、建立递归函数，用来搜索第n个位置；  
+3、第n个位置搜索方式与八皇后问题类似。  
+*/ 
+var count = 0;  
+function show(arr) {  
+    document.write("P<sub>" + ++count + "</sub>: " + arr + "<br />");  
+}  
+function seek(index, n) {  
+    if (n >= 0) //判断是否已回溯到了第一个位置之前，即已经找到了所有位置排列  
+        if (index[n] < index.length - 1) { //还有下一个位置可选  
+            index[n]++; //选择下一个位置  
+            if ((function () { //该匿名函数判断该位置是否已经被选择过  
+                for (var i = 0; i < n; i++)  
+                    if (index[i] == index[n]) return true; //已选择  
+                return false; //未选择  
+            })())  
+                return seek(index, n); //重新找位置  
+            else 
+                return true; //找到  
+        }  
+        else { //当前无位置可选，进行递归回溯  
+            index[n] = -1; //取消当前位置  
+            if (seek(index, n - 1)) //继续找上一个位置  
+                return seek(index, n); //重新找当前位置  
+            else 
+                return false; //已无位置可选  
+        }  
+    else 
+        return false;  
+}  
+function perm(arr) {  
+    var index = new Array(arr.length);  
+    for (var i = 0; i < index.length; i++)  
+        index[i] = -1; //初始化所有位置为-1，以便++后为0  
+    for (i = 0; i < index.length - 1; i++)  
+        seek(index, i); //先搜索前n-1个位置  
+    while (seek(index, index.length - 1)) { //不断搜索第n个位置，即找到所有位置排列  
+        var temp = [];  
+        for (i = 0; i < index.length; i++) //将位置之转换为元素  
+            temp.push(arr[index[i]]);  
+        show(temp);  
+    }  
+}  
+/*  
+全排列（非递归回溯）算法  
+1、建立位置数组，即对位置进行排列，排列成功后转换为元素的排列；  
+2、第n个位置搜索方式与八皇后问题类似。  
+*/ 
+var count = 0;  
+function show(arr) {  
+    document.write("P<sub>" + ++count + "</sub>: " + arr + "<br />");  
+}  
+function seek(index, n) {  
+    var flag = false, m = n; //flag为找到位置排列的标志，m保存正在搜索哪个位置  
+    do {  
+        index[n]++;  
+        if (index[n] == index.length) //已无位置可用  
+            index[n--] = -1; //重置当前位置，回退到上一个位置  
+        else if (!(function () {  
+            for (var i = 0; i < n; i++)  
+                if (index[i] == index[n]) return true;  
+            return false;  
+        })()) //该位置未被选择  
+            if (m == n) //当前位置搜索完成  
+                flag = true;  
+            else 
+                n++;  
+    } while (!flag && n >= 0)  
+    return flag;  
+}  
+function perm(arr) {  
+    var index = new Array(arr.length);  
+    for (var i = 0; i < index.length; i++)  
+        index[i] = -1;  
+    for (i = 0; i < index.length - 1; i++)  
+        seek(index, i);  
+    while (seek(index, index.length - 1)) {  
+        var temp = [];  
+        for (i = 0; i < index.length; i++)  
+            temp.push(arr[index[i]]);  
+        show(temp);  
+    }  
+}  
+perm(["01","02","03","04"]);  
+</script>
+</body>
+</html>
