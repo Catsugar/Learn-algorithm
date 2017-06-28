@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Make a Person</title>
+</head>
+
+<body>
+<script>
+/*日用下面给定的方法构造一个对象.
+
+方法有 getFirstName(), getLastName(), getFullName(), setFirstName(first), setLastName(last), and setFullName(firstAndLast).
+
+所有有参数的方法只接受一个字符串参数.
+
+所有的方法只与实体对象交互.*/
+var Person = function(name) {
+    var arr=name.split(" ");
+    /*this.FirstName=arr[0];
+    this.LastName=arr[1];
+    this.FullName=name;*/
+	var FirstName=FirstName || arr[0];
+    var LastName=LastName || arr[1];
+    var FullName=FullName || name; 
+	this.setFirstName=function(first){
+		FirstName=first;
+		FullName=FirstName.concat(" ",LastName);
+	};
+	this.setLastName=function(last){
+		LastName=last;
+		FullName=FirstName.concat(" ",LastName);
+	};
+	this.setFullName=function(firstAndLast){
+		FullName=firstAndLast;
+		FirstName=FullName.split(" ")[0];
+		LastName=FullName.split(" ")[1];	
+	};
+    this.getFirstName=function(){
+		return FirstName;
+	};
+	this.getLastName=function(){
+		return LastName;
+	};
+	this.getFullName=function(){
+		return FullName;
+	};
+};
+
+var bob = new Person('Bob Ross');
+bob.setLastName("Haskell");
+alert(bob.getLastName());
+
+
+</script>
+</body>
+</html>
