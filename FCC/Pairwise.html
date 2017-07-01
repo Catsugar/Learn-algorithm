@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pairwise</title>
+</head>
+
+<body>
+<script>
+/*举个例子：有一个能力数组[7,9,11,13,15]，按照最佳组合值为20来计算，只有7+13和9+11两种组合。而7在数组的索引为0，13在数组的索引为3，9在数组的索引为1，11在数组的索引为2。
+所以我们说函数：pairwise([7,9,11,13,15],20) 的返回值应该是0+3+1+2的和，即6。*/
+function pairwise(arr, arg) {
+  var iarr=[];
+  for(var i=0;i<arr.length;i++){
+    for(var j=i+1;j<arr.length;j++){
+      if(arr[i]+arr[j]===arg){
+		  if(iarr.indexOf(i)===-1&&iarr.indexOf(j)===-1){
+		     iarr.push(i,j);
+		  }
+	  }
+	}
+  }
+  var IndexSum=iarr.reduce(function(a,b){
+	return a+b;
+  },0);
+  console.log("*******************"+iarr);
+  console.log("*******************和："+IndexSum);
+  return IndexSum;
+}
+
+pairwise([1,4,2,3,0,5], 7);
+
+pairwise([1, 1, 1], 2);
+pairwise([0, 0, 0, 0, 1, 1], 1);
+</script>
+</body>
+</html>
