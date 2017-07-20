@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>判断回文</title>
+</head>
+
+<body>
+<script>
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+  var re = /[\W\s_]/gi;//不区分大小写的寻找空白字符，非单词字符
+  var y=x.toString();
+  y = y.replace(re,"");
+  var z=parseInt(y.split("").reverse().join(""));
+  alert(z);
+  return x===z;
+};
+ isPalindrome(123123); 
+</script>
+</body>
+</html>

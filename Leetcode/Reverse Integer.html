@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Reverse Integer </title>
+<title>回转整数</title>
 </head>
 
 <body>
@@ -12,18 +12,14 @@
  * @return {number}
  */
 var reverse = function(x) {
-    var y=0;
-    var arr=x.toString().split('').reverse();
-	if(x<0){
-		y=-parseInt(arr.join('').slice(0, -1));
-		return y>-2147483648?y:0;
-	}else if(x>0){
-		y=parseInt(arr.join(''));
-		return y<2147483648?y:0;
-	}  
+  if(x>2147483648 || x<-2147483648){return 0}
+  var y=x.toString();
+  var z=parseInt(y.split("").reverse().join(""));
+  if(x<0){z=-z}
+  if(z>2147483648 || z<-2147483648){return 0}
+  return z;
 };
-
-alert(reverse(-32555551));
+ alert("结果是"+reverse(-2147483412)); 
 </script>
 </body>
 </html>
