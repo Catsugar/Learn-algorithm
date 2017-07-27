@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script>
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(l1, l2) {
+  if(l1==undefined || l1.length===0){return l2;}
+  if(l2==undefined || l2.length===0){return l1;}
+  var arr=l1;
+  for(var i=0;i<l2.length;i++){
+	  if(l1.indexOf(l2[i])===-1){
+		  arr.push(l2[i]);
+		  alert(arr);
+	  }	  
+  } 
+  alert(arr);
+  return arr; 
+};
+
+/***正确解法
+var mergeTwoLists = function(l1, l2) {
+    if(l1 == null) return l2;
+    if(l2 == null) return l1;
+    if(l1.val >l2.val) {
+        l2.next =mergeTwoLists(l1,l2.next);
+        return l2;
+    }else {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    }
+};*/
+//测试
+var a=[2,4,"mkkm"];
+var b=[1,99,"oo"];
+mergeTwoLists(a,b);
+
+
+</script>
+</body>
+</html>
