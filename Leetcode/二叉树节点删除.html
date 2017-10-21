@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二叉树中序遍历</title>
+</head>
+
+<body>
+<script type="text/javascript">
+function BinaryTree(){
+  //定义一个节点
+  var Node=function(key){
+	this.key=key; 
+	this.left=null;
+	this.right=null;
+  }
+  //定义一个根节点
+  var root=null;
+  var insertNode=function(node,newNode){
+  	if(newNode.key<node.key){
+  	  if (node.left===null){
+  	  	node.left=newNode;
+  	  }else{
+  	  	insertNode(node.left,newNode);
+  	  } 
+  	}else{
+  	  if (node.right===null){
+  	  	node.right=newNode;
+  	  }else{
+  	  	insertNode(node.right,newNode);
+  	  } 
+  	}
+  }
+  this.insert=function(key){
+    var newNode=new Node(key);
+  	if(root==null){
+  	  root=newNode;
+  	}else{
+  	  insertNode(root,newNode);
+  	}
+  }
+   //前序遍历接口
+  var preOrderTraverseNode=function(node,callback){
+    if(node!=null){
+      callback(node.key);
+      preOrderTraverseNode(node.left,callback);
+      preOrderTraverseNode(node.right,callback);
+    }
+  }
+  this.preOrderTraverse=function (callback) {
+    preOrderTraverseNode(root,callback);
+  }
+  //中序遍历接口
+  var inOrderTraverseNode=function(node,callback){
+  	if(node!=null){
+  		inOrderTraverseNode(node.left,callback);
+  		callback(node.key);
+  		inOrderTraverseNode(node.right,callback);
+
+  	}
+  }
+  this.inOrderTraverse=function (callback) {
+  	inOrderTraverseNode(root,callback);
+  }
+  //后序遍历接口
+  var postOrderTraverseNode=function(node,callback){
+  	if(node!=null){
+
+  		postOrderTraverseNode(node.left,callback);
+  		postOrderTraverseNode(node.right,callback);
+  		callback(node.key);
+  	}
+  }
+  this.postOrderTraverse=function (callback) {
+  	postOrderTraverseNode(root,callback);
+  }
+  //查找最小值
+  var minNode=function(node){
+    if(node!=null){
+      if(node.left!=null){
+        return minNode(node.left);
+      }else{
+        console.log(node.key)
+        return node;
+      }
+    }else{
+      return(null); 
+    }
+  }
+  this.min=function () {
+    return minNode(root);
+  }
+  //查找最大值
+  var maxNode=function(node){
+    if(node!=null){
+      if(node.right!=null){
+        return maxNode(node.right);
+      }else{
+        console.log(node.key)
+        return node;
+      }  
+    }else{
+      return(null); 
+    }
+  }
+  this.max=function () {
+    maxNode(root);
+  }
+  //查找特定值
+  var findNode=function(node,key){
+    if(node!=null){
+      if(node.key==key){
+        console.log('找到了：'+node.key);
+        return node;
+      }else if(node.key>key){
+        return findNode(node.left,key);
+      }else if(node.key<key){
+        return findNode(node.right,key);
+      }
+    }else{
+      console.log('找不到');
+      return(null); 
+    }
+  }
+  this.find=function (key) {
+    return findNode(root,key);
+  }
+  //删除特定值
+  var removeNode=function(node,key){
+    if(node==null){
+      return null;
+    }
+    if(node.key==key){
+      console.log('要删除的宝宝：'+node.key);
+      if(node.left==null && node.right==null){
+        node=null;
+        return node;
+      }
+      if(node.left==null){
+        node=node.right;
+        return node;
+      }
+      if(node.right==null){
+        node=node.left;
+        return node;
+      }
+      if(node.left!=null && node.right!=null){
+        var aux=minNode(node.right);
+        node.key=aux.key;
+        node.right=removeNode(node.right, aux.key);
+        return node;
+      }
+    }else if(node.key>key){
+      return removeNode(node.left,key);
+    }else if(node.key<key){
+      return removeNode(node.right,key);
+    }
+  }
+  this.remove=function (key) {
+    removeNode(root,key);  
+  }
+}
+/***************测试*********************/
+var nodes=[8,3,10,1,6,9,14,4,7,13];
+var binaryTree=new BinaryTree();
+nodes.forEach(function (key) {
+  binaryTree.insert(key);
+});
+var callback=function (key) {
+	console.log(key);
+}
+console.log('前序遍历---------------');
+binaryTree.preOrderTraverse(callback);
+console.log('中序遍历---------------');
+binaryTree.inOrderTraverse(callback);
+console.log('后序遍历---------------');
+binaryTree.postOrderTraverse(callback);
+console.log('最小值查找结果是---------------');
+binaryTree.min();
+console.log('最大值查找结果是---------------');
+binaryTree.max();
+console.log('查找7结果是---------------');
+binaryTree.find(7);
+console.log('删除14结果是---------------');
+binaryTree.remove(14);
+binaryTree.inOrderTraverse(callback);
+</script>
+</body>
+</html>
