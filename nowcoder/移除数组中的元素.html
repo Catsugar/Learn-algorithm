@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>移除数组中的元素（no copy）</title>
+</head>
+
+<body>
+题目描述
+
+移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回
+
+<script type="text/javascript">
+function removeWithoutCopy(arr, item) {
+  var count=0;
+  arr.forEach(function(num){
+      if(num==item){
+          count++;
+      } 
+  })
+  for(var i=0;i<count;i++){
+    arr.splice(arr.indexOf(item), 1);
+  } 
+  return arr;
+}
+console.log(removeWithoutCopy([1, 2, 2, 3, 4, 2, 2], 2));
+</script>
+</body>
+</html>
