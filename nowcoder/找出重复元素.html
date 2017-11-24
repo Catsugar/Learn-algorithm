@@ -13,9 +13,13 @@
 <script type="text/javascript">
 
 function duplicates(arr) {
-  for(var i=0;i<arr.length;i++){
-        
-  }
+  var arr1=arr.filter(function(element,index,self){
+    return self.indexOf(element) !== index; 
+  })
+  var arr2=arr1.filter(function(element,index,self){
+    return self.indexOf(element) == index; 
+  })
+  return arr2;
 }
 console.log(duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3]));
 
