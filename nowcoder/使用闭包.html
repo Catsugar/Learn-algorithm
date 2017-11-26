@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+实现函数 makeClosures，调用之后满足如下条件：<br>
+1、返回一个函数数组 result，长度与 arr 相同<br>
+2、运行 result 中第 i 个函数，即 result[i]()，结果与 fn(arr[i]) 相同<br>
+<script type="text/javascript">
+function makeClosures(arr, fn) {
+    var result = [];
+    arr.forEach(function (obj) {
+        result.push(function () {
+            return fn(obj);
+        })
+    });
+    return result;
+}
+//测试
+var arr0=[1,2,3];
+var fn0=function (x) { 
+	return x * x; 
+}
+console.log(makeClosures(arr0, fn0));
+</script>
+</body>
+</html>

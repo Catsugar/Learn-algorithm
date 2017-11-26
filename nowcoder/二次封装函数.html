@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+题目描述<br>
+实现函数 partialUsingArguments，调用之后满足如下条件：<br>
+1、返回一个函数 result<br>
+2、调用 result 之后，返回的结果与调用函数 fn 的结果一致<br>
+3、fn 的调用参数为 partialUsingArguments <br>的第一个参数之后的全部参数以及 result 的调用参数<br>
+<script type="text/javascript">
+function partialUsingArguments(fn) {
+     //先获取p函数第一个参数之后的全部参数
+     var args = Array.prototype.slice.call(arguments,1);
+     //声明result函数
+     var result = function(){
+         //使用concat合并两个或多个数组中的元素
+         return fn.apply(null, args.concat([].slice.call(arguments)));
+     }
+     return result;
+}
+//测试
+
+</script>
+</body>
+</html>
