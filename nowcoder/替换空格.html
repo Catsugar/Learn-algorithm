@@ -12,12 +12,11 @@
 <script type="text/javascript">
 function replaceSpace(str)
 {
-    // write code here
+    return str.split(" ").join("%20"); 
+
 }
 //测试
-var a=10;
-var arr=[[1,2,3],[4,5,6],[7,8,9]];
-console.log(Find(a, arr));
+console.log(replaceSpace("We Are Happy"));
 </script>
 </body>
 </html>
