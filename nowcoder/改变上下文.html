@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+将函数 fn 的执行上下文改为 obj，返回 fn 执行后的值<br>
+<script type="text/javascript">
+function alterContext(fn, obj) {
+  return fn.call(obj);
+}
+//测试
+console.log(alterContext(function() {return this.greeting + ', ' + this.name + '!'; }, {name: 'Rebecca', greeting: 'Yo' }));
+</script>
+</body>
+</html>

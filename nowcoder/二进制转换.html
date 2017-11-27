@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+获取数字 num 二进制形式第 bit 位的值。注意：<br>
+1、bit 从 1 开始<br>
+2、返回 0 或 1<br>
+3、举例：2 的二进制为 10，第 1 位为 0，第 2 位为 1<br>
+<script type="text/javascript">
+function valueAtBit(num, bit) {
+  var arr=num.toString(2).split('');
+  return parseInt(arr[arr.length-bit]);
+}
+//测试
+console.log(valueAtBit(128, 8));
+</script>
+</body>
+</html>
