@@ -16,15 +16,21 @@
 5、fn 的参数依次为函数 a, b, c 的调用参数<br>
 <script type="text/javascript">
 function curryIt(fn) {
-  var args = [].slice.call(arguments, 1);
-  return function() {
-    var newArgs = args.concat([].slice.call(arguments));
-        return fn.apply(null, newArgs);
-    };
+    return a = function(d){
+        var b1 = arguments[0];
+        return b = function(f){
+            var c1 = arguments[0];
+            return c = function(g){
+                var a1 = arguments[0];
+                return fn.call(this,d,f,g);
+            }
+        }
+    }
 }
+
 //测试
 var fn = function (a, b, c) {return a + b + c};
-console.log(ccurryIt(fn)(1)(2)(3));
+console.log(curryIt(fn)(1)(2)(3));
 </script>
 </body>
 </html>
