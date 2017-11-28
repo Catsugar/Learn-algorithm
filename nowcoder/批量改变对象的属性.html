@@ -11,15 +11,16 @@
 给定一个构造函数 constructor，请完成 alterObjects 方法，将 constructor 的所有实例的 greeting 属性指向给定的 greeting 变量。<br>
 <script type="text/javascript">
 function alterObjects(constructor, greeting) {
-
+  constructor.prototype.greeting = greeting;
 }
 //测试
-var C = function(name) {this.name = name; return this;}; 
+var C = function(name) {
+	this.name = name; 
+	return this;
+}; 
 var obj1 = new C('Rebecca'); 
 alterObjects(C, 'What\'s up');
- obj1.greeting;
-
-console.log(alterContext(function() {return this.greeting + ', ' + this.name + '!'; }, {name: 'Rebecca', greeting: 'Yo' }));
+console.log(obj1.greeting);
 </script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+给定字符串 str，检查其是否包含 连续3个数字 <br>
+1、如果包含，返回最新出现的 3 个数字的字符串<br>
+2、如果不包含，返回 false<br>
+<script type="text/javascript">
+function captureThreeNumbers(str) {
+  var re= /\d{3}/ //i不区分大小写
+  if(str.match(re)!==null){
+    return str.match(re)[0];
+  }
+  return false
+}
+//测试
+console.log(captureThreeNumbers('9876543'));
+</script>
+</body>
+</html>

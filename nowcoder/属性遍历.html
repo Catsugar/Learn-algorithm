@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+找出对象 obj 不在原型链上的属性(注意这题测试例子的冒号后面也有一个空格~)<br>
+1、返回数组，格式为 key: value<br>
+2、结果数组不要求顺序<br>
+<script type="text/javascript">
+function iterate(obj) {
+    var arr = [];
+    var keys = Object.keys(obj);
+    for(var i=0; i<keys.length; i++){
+        if(obj.hasOwnProperty(keys[i])){
+            arr.push(keys[i] + ': ' + obj[keys[i]])
+        }
+    }
+    return arr;
+}
+//测试
+var C = function() {this.foo = 'bar'; this.baz = 'bim';}; 
+C.prototype.bop = 'bip'; 
+console.log(iterate(new C()));
+</script>
+</body>
+</html>
