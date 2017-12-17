@@ -1,0 +1,48 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
+<script type="text/javascript">
+function VerifySquenceOfBST(sequence)
+{
+  if(sequence.length==0){
+  	return false;
+  }
+  var root=sequence.pop();
+  if(sequence.length==0){
+  	return true;
+  }
+  var idx=-1;
+  for(var i=0;i<sequence.length-1;i++){
+  	if(sequence[i]>root){
+  		idx=i;
+  		break;
+  	}
+  }
+  var righttree = (idx==-1)?[]:sequence.splice(idx);
+  var lefttree=sequence;
+  var right=righttree.every(function(val){
+  	return val >root;
+  });
+  if(right){
+  	if(lefttree.length==0){
+  		return VerifySquenceOfBST(righttree);
+  	}else if(righttree.length==0){
+  		return VerifySquenceOfBST(righttree);
+  	}else{
+  		return VerifySquenceOfBST(lefttree) && VerifySquenceOfBST(righttree);
+  	}
+  } else {
+  	return false;
+  }
+}
+</script>
+</body>
+</html>
