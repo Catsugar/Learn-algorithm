@@ -12,10 +12,17 @@ HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天
 <script type="text/javascript">
 function FindGreatestSumOfSubArray(array)
 {
-
+    var pre = array[0];
+    var max = array[0];
+    for(var i=1;i<array.length;i++){
+        pre = pre>0?pre:0;
+        max = Math.max(max,pre+array[i]);
+        pre += array[i]; 
+    }
+    return max;
 }
 //测试
-var array={6,-3,-2,7,-15,1,2,2};
+var array=[6,-3,-2,7,-15,1,2,2];
 console.log(FindGreatestSumOfSubArray(array));
 </script>
 </body>
