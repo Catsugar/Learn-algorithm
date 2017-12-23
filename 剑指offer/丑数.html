@@ -1,0 +1,49 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+把只包含因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。
+<br>
+<script type="text/javascript">
+function GetUglyNumber_Solution(index)
+{
+  if(index==0){return 0;}
+  var result=[];
+  var a=1;
+  result.push(a);
+  while(result.length<index){
+    var b=addarr(a);
+    for(var i=0;i<b.length;i++){
+      if(result.length<index){
+      	result.push(b[i]);
+      }else{
+        return result;
+        break;
+      }
+    } 
+    for(var i=0;i<b.length;i++){
+    	
+    }
+  }
+  return result;
+}
+function addarr(a){
+  var b=[];
+  var factor=[2,3,5];
+  for(var i=0;i<factor.length;i++){
+    b.push(a*factor[i]);
+  }
+  return b;
+}
+//测试
+var index=3;
+console.log(GetUglyNumber_Solution(index));
+</script>
+</body>
+</html>

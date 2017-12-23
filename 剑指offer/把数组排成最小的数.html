@@ -1,0 +1,39 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。<br>
+<script type="text/javascript">
+function PrintMinNumber(numbers)
+{
+  numbers.sort(compare);
+  var result="";
+  for(var i=0;i<numbers.length;i++){
+  	result+=numbers[i];
+  }
+  return result;
+}
+
+function compare(a,b){
+	var str1=a+""+b;
+	var str2=b+""+a;
+	for(var i=0;i<str1.length;i++){
+		if(str1.charAt(i)>=str2.charAt(i)){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+}
+//测试
+var numbers=[3,32,321];
+console.log(PrintMinNumber(numbers));
+</script>
+</body>
+</html>
