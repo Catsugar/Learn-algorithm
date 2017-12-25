@@ -1,0 +1,32 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007
+<br>
+<script type="text/javascript">
+function InversePairs(data)
+{
+  var P=0;
+  for(var i=0;i<data.length;i++){
+    for(var j=i;j<data.length;j++){
+      if(data[i]>data[j]){
+      	P++;
+      }  
+    }
+  }
+  return P%1000000007
+}
+
+//测试
+var data=[1,2,3,4,5,6,7,0];
+console.log(InversePairs(data));
+</script>
+</body>
+</html>

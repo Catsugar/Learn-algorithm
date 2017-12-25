@@ -1,0 +1,31 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+在一个字符串(1<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置
+<br>
+<script type="text/javascript">
+function FirstNotRepeatingChar(str)
+{
+  var arr=str.split('');
+  for(var i=0;i<arr.length;i++){
+    var newstr=str.slice(0,i).concat(str.slice(i+1));
+    if(newstr.indexOf(arr[i])==-1){
+      return i;
+    }
+  }
+  return -1;
+}
+
+//测试
+var str="ABCDGABCD";
+console.log(FirstNotRepeatingChar(str));
+</script>
+</body>
+</html>

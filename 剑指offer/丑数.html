@@ -17,29 +17,16 @@ function GetUglyNumber_Solution(index)
   var result=[];
   var a=1;
   result.push(a);
-  while(result.length<index){
-    var b=addarr(a);
-    for(var i=0;i<b.length;i++){
-      if(result.length<index){
-      	result.push(b[i]);
-      }else{
-        return result;
-        break;
-      }
-    } 
-    for(var i=0;i<b.length;i++){
-    	
-    }
+  var two=0;
+  var three=0;
+  var five=0;
+  for(var i=1;i<index;i++){
+    result[i] = Math.min(result[two]*2,result[three]*3,result[five]*5);
+    if(result[i]==result[two]*2){two++;}
+    if(result[i]==result[three]*3){three++;}
+    if(result[i]==result[five]*5){five++;} 
   }
-  return result;
-}
-function addarr(a){
-  var b=[];
-  var factor=[2,3,5];
-  for(var i=0;i<factor.length;i++){
-    b.push(a*factor[i]);
-  }
-  return b;
+  return result[index-1];
 }
 //测试
 var index=3;
