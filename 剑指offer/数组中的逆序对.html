@@ -1,0 +1,77 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007
+<br>
+<script type="text/javascript">
+function InversePairs(data)
+{
+    // write code here
+    var count=0;
+    count=mergeSort(data);
+    return count%1000000007;
+     
+    function mergeSort(arr){
+        if(arr.length<2)
+            return;
+        var step=1,left=0,right=0,sum=0,count=0;
+        while(step<arr.length){
+            left=0;
+            right=step;
+            while(right+step<=arr.length){
+                count=mergeArray(arr,left,left+step,right,right+step);
+                left=right+step;
+                right=left+step;
+                sum+=count;
+            }
+            if(right<arr.length){
+                count=mergeArray(arr,left,left+step,right,arr.length);
+                sum+=count;
+            }
+            step=step*2;
+        }
+ 
+        return sum;
+    }
+ 
+    function mergeArray(arr,startLeft,stopLeft,startRight,stopRight){
+        var rightArr=new Array(stopRight-startRight+1);
+        var leftArr=new Array(stopLeft-startLeft+1);
+        var count=0;
+        for(var i=0;i<(rightArr.length-1);i++){
+            rightArr[i]=arr[startRight+i];
+        }
+        for(var i=0;i<(leftArr.length-1);i++){
+            leftArr[i]=arr[startLeft+i];
+        }
+        rightArr[rightArr.length-1]=Infinity;
+        leftArr[leftArr.length-1]=Infinity;
+        var m=0,n=0,len=leftArr.length-1;
+        for(var k=startLeft;k<stopRight;k++){
+            if(leftArr[m]<=rightArr[n]){
+                arr[k]=leftArr[m];
+                m++;
+            }else{
+                arr[k]=rightArr[n];
+                n++;
+                count+=len-m;
+            }
+        }
+ 
+        return count;
+    }
+ 
+}
+//测试
+var data=[1,2,3,4,5,6,7,0];
+console.log(InversePairs(data));
+</script>
+</body>
+</html>
