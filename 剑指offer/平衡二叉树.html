@@ -1,0 +1,30 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+输入一棵二叉树，判断该二叉树是否是平衡二叉树
+<script type="text/javascript">
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function IsBalanced_Solution(pRoot)
+{
+    if(!pRoot) return true;
+    return Math.abs(height(pRoot.left)-height(pRoot.right))<=1;
+    function height(node){
+        if(!node) return 0;
+        if(!(node.left) && !(node.right)) return 1;
+        return Math.max(height(node.left),height(node.right))+1;
+    }
+}
+</script>
+</body>
+</html>
