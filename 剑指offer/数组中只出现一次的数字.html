@@ -1,0 +1,37 @@
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+
+<body>
+
+题目描述<br>
+一个整型数组里除了两个数字之外，其他的数字都出现了偶数次。请写程序找出这两个只出现一次的数字。
+<script type="text/javascript">
+function FindNumsAppearOnce(array)
+{
+  function isRepeat(element, array) {
+  	var count=0;
+  	for(var i=0;i<array.length;i++){
+  		if(element==array[i]){
+  			count++;
+  		}
+  	}
+    return (count==1)? false:true;
+  }
+  var result=[];
+  for(var i=0;i<array.length;i++){
+   if(!isRepeat(array[i], array)){result.push(array[i]);}
+  }
+  return result;
+}
+
+//测试
+var A=[1,2,3,2,5,6,6];
+alert(FindNumsAppearOnce(A));
+
+</script>
+</body>
+</html>
